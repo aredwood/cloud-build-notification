@@ -1,4 +1,4 @@
 # Gooogle Cloud Build
 steps:
 - name: gcr.io/cloud-builders/gcloud
-  args: ["functions", "deploy", "cloud-build-notification", "--entry-point", "notification", "--runtime", "python37", "--trigger-topic", "cloud-builds"]
+  args: ["functions", "deploy", "cloud-build-notification-$BRANCH_NAME", "--entry-point", "notification", "--runtime", "python37", "--trigger-topic", "cloud-builds"]
