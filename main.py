@@ -12,7 +12,6 @@ def notification(event, context):
 
     # other things here
 
-    
 def sendSlackNotification(buildUpdateJson):
 
     # parse the json
