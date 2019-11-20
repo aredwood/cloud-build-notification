@@ -69,7 +69,6 @@ def sendSlackNotification(buildUpdateJson):
                 "color": colors.get(status),
                 "title": "Google Cloud Build Notification",
                 "title_link": title_link,
-                "text": "%s -> %s" % (updatePayload['source']['repoSource']['branchName'],updatePayload['source']['repoSource']['repoName']),
                 "fields": [
                     {
                         "title": "Repo",
