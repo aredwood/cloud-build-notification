@@ -26,6 +26,7 @@ def sendSlackNotification(buildUpdateJson):
 
     emojis = {
         "QUEUED":"📨",
+        "WORKING":"🔨",
         "SUCCESS":"🙌",
         "FAILURE":"😭"
     }
