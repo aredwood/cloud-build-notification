@@ -39,7 +39,7 @@ def sendSlackNotification(buildUpdateJson):
 
     branchName = updatePayload['source']['repoSource']['branchName']
     repoName = updatePayload['source']['repoSource']['repoName']
-    commitSha = updatePayload['source']['repoSource']['commitSha']
+    commitSha = updatePayload['sourceProvenance']['resolvedRepoSource']['commitSha']
 
     fallback = "%s%s -> %s:%s" % (
         status,
