@@ -41,10 +41,9 @@ def sendSlackNotification(buildUpdateJson):
     repoName = updatePayload['source']['repoSource']['repoName']
     commitSha = updatePayload['sourceProvenance']['resolvedRepoSource']['commitSha']
 
-    fallback = "%s %s -> %s:%s" % (
-        status,
-        emojis.get(status), 
+    fallback = "%s is %s on %s" % (
         branchName, 
+        status,
         repoName
     )
 
