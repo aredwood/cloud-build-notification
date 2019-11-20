@@ -39,8 +39,8 @@ def sendSlackNotification(buildUpdateJson):
     fallback = "%s%s -> %s:%s" % (
         status,
         emojis.get(status), 
-        updatePayload.source.repoSource.branchName, 
-        updatePayload.source.repoSource.repoName
+        updatePayload['source']['repoSource']['branchName'], 
+        updatePayload['source']['repoSource']['repoName']
     )
 
     colors = {
@@ -50,7 +50,7 @@ def sendSlackNotification(buildUpdateJson):
         "FAILURE": "#d11919"
     }
 
-    title_link = "https://console.cloud.google.com/cloud-build/builds/%s?project=%s" % (updatePayload.id,updatePayload.projectId)
+    title_link = "https://console.cloud.google.com/cloud-build/builds/%s?project=%s" % (updatePayload['id'],updatePayload['projectId'])
 
     # create a json payload
     payload = json.dumps({
