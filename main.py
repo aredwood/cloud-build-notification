@@ -60,11 +60,11 @@ def sendSlackNotification(buildUpdateJson):
                 "color": colors.get(status),
                 "title": "Google Cloud Build Notification",
                 "title_link": title_link,
-                "text": "Optional text that appears within the attachment",
+                "text": "%s -> %s" % (updatePayload['source']['repoSource']['branchName'],updatePayload['source']['repoSource']['repoName']),
                 "fields": [
                     {
                         "title": "Status",
-                        "value": status,
+                        "value": "%s%s" % (status,emojis.get(status)),
                         "short": True
                     }
                 ],
