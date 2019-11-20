@@ -37,11 +37,15 @@ def sendSlackNotification(buildUpdateJson):
 
     print(updatePayload)
 
+    branchName = updatePayload['source']['repoSource']['branchName']
+    repoName = updatePayload['source']['repoSource']['repoName']
+    commitSha = updatePayload['source']['repoSource']['commitSha']
+
     fallback = "%s%s -> %s:%s" % (
         status,
         emojis.get(status), 
-        updatePayload['source']['repoSource']['branchName'], 
-        updatePayload['source']['repoSource']['repoName']
+        branchName, 
+        repoName
     )
 
     colors = {
@@ -56,6 +60,7 @@ def sendSlackNotification(buildUpdateJson):
     now = datetime.now()
     timestamp = datetime.timestamp(now)
 
+
     # create a json payload
     payload = json.dumps({
         "attachments": [
@@ -69,6 +74,11 @@ def sendSlackNotification(buildUpdateJson):
                     {
                         "title": "Status",
                         "value": "%s %s" % (status,emojis.get(status)),
+                        "short": True
+                    },
+                    {
+                        "title": "Commit",
+                        "value": "#%s" % (commitSha[:6]),
                         "short": True
                     }
                 ],
