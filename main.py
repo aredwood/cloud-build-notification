@@ -37,7 +37,7 @@ def sendSlackNotification(buildUpdateJson):
     print(updatePayload)
 
     fallback = "%s%s -> %s:%s" % (
-        updatePayload.status,
+        status,
         emojis.get(status), 
         updatePayload.source.repoSource.branchName, 
         updatePayload.source.repoSource.repoName
@@ -64,7 +64,7 @@ def sendSlackNotification(buildUpdateJson):
                 "fields": [
                     {
                         "title": "Status",
-                        "value": updatePayload.status,
+                        "value": status,
                         "short": True
                     }
                 ],
