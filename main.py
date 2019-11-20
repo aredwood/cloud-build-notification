@@ -37,6 +37,8 @@ def sendSlackNotification(buildUpdateJson):
     # form the message, here it is a single line
     line = "%s - %s" % (buildId, emojis.get(status))
 
+    print(updatePayload)
+
     # create a json payload
     payload = json.dumps({
         "attachments": [
