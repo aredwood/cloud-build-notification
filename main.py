@@ -34,28 +34,40 @@ def sendSlackNotification(buildUpdateJson):
         "FAILURE": "😭"
     }
 
-    # form the message, here it is a single line
-    line = "%s - %s" % (buildId, emojis.get(status))
-
     print(updatePayload)
+
+    fallback = "%s%s -> %s:%s" % (
+        updatePayload.status,
+        emojis.get(status), 
+        updatePayload.source.repoSource.branchName, 
+        updatePayload.source.repoSource.repoName
+    )
+
+    colors = {
+        "QUEUED": "#1da7f2",
+        "WORKING": "#f2e01d",
+        "SUCCESS": "#20c74d",
+        "FAILURE": "#d11919"
+    }
+
+    title_link = "https://console.cloud.google.com/cloud-build/builds/%s?project=%s" % (updatePayload.id,updatePayload.projectId)
 
     # create a json payload
     payload = json.dumps({
         "attachments": [
             {
-                "fallback": "Required plain-text summary of the attachment.",
-                "color": "#36a64f",
-                "title": "Slack API Documentation",
-                "title_link": "https://api.slack.com/",
+                "fallback": fallback,
+                "color": colors.get(status),
+                "title": "Google Cloud Build Notification",
+                "title_link": title_link,
                 "text": "Optional text that appears within the attachment",
                 "fields": [
                     {
-                        "title": "Priority",
-                        "value": "High",
-                        "short": False
+                        "title": "Status",
+                        "value": updatePayload.status,
+                        "short": True
                     }
                 ],
-                "footer": "Slack API",
 
                 "ts": 123456789
             }
