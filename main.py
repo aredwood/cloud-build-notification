@@ -72,6 +72,16 @@ def sendSlackNotification(buildUpdateJson):
                 "text": "%s -> %s" % (updatePayload['source']['repoSource']['branchName'],updatePayload['source']['repoSource']['repoName']),
                 "fields": [
                     {
+                        "title": "Repo",
+                        "value": "%s" % (repoName),
+                        "short": True
+                    },
+                    {
+                        "title": "Branch",
+                        "value": "%s" % (branchName),
+                        "short": True
+                    },
+                    {
                         "title": "Status",
                         "value": "%s %s" % (status,emojis.get(status)),
                         "short": True
