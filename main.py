@@ -68,7 +68,7 @@ def sendSlackNotification(buildUpdateJson):
                 "fields": [
                     {
                         "title": "Status",
-                        "value": "%s%s" % (status,emojis.get(status)),
+                        "value": "%s %s" % (status,emojis.get(status)),
                         "short": True
                     }
                 ],
