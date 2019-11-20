@@ -2,6 +2,7 @@ import base64
 import requests
 import json
 import os
+from datetime import datetime
 
 
 def notification(event, context):
@@ -52,6 +53,9 @@ def sendSlackNotification(buildUpdateJson):
 
     title_link = "https://console.cloud.google.com/cloud-build/builds/%s?project=%s" % (updatePayload['id'],updatePayload['projectId'])
 
+    now = datetime.now()
+    timestamp = datetime.timestamp(now)
+
     # create a json payload
     payload = json.dumps({
         "attachments": [
@@ -69,7 +73,7 @@ def sendSlackNotification(buildUpdateJson):
                     }
                 ],
 
-                "ts": 123456789
+                "ts": timestamp
             }
         ]
     })
