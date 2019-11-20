@@ -24,8 +24,14 @@ def sendSlackNotification(buildUpdateJson):
     # post url
     url = os.environ.get("SLACK_LINK")
 
+    emojis = {
+        "QUEUED":"📨",
+        "SUCCESS":"🙌",
+        "FAILURE":"😭"
+    }
+
     # form the message, here it is a single line
-    line = "%s - %s" % (buildId,status)
+    line = "%s - %s" % (buildId,emojis.get(status))
 
     # create a json payload
     payload = json.dumps({
