@@ -78,7 +78,7 @@ def sendSlackNotification(buildUpdateJson):
                     },
                     {
                         "title": "Commit",
-                        "value": "#%s" % (commitSha[:6]),
+                        "value": "#%s" % (commitSha[:7]),
                         "short": True
                     }
                 ],
