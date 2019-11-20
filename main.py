@@ -74,7 +74,7 @@ def sendSlackNotification(buildUpdateJson):
                     {
                         "title": "Repo",
                         "value": "%s" % (repoName),
-                        "short": True
+                        "short": False
                     },
                     {
                         "title": "Branch",
